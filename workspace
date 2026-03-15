@@ -1,3 +1,5 @@
-#!/bin/sh
+#!/bin/bash
 
-docker run -v ./home:/home -it ubuntu25-dev
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE}")" && pwd)"
+
+docker run -v $SCRIPT_DIR/home:/home -it ubuntu25-dev
