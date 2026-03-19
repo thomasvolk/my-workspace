@@ -2,23 +2,28 @@
 
 set -e
 
-# if ohmyysh is not installed
+# install ohmyzsh
 if [ ! -d $HOME/.oh-my-zsh ]; then
-  echo "$0 - install ohmyzsh"
   if [ -f $HOME/.zshrc ]; then
-      echo "$0 - backup existing .zshrc to .zshrc_bak"
       mv $HOME/.zshrc $HOME/.zshrc_bak
   fi
   git config --global --add safe.directory $HOME/.oh-my-zsh
   sh -c "RUNZSH=no $(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh) --skip-chsh"
+  { printf 'export ZSH_DISABLE_COMPFIX=true\n' ; cat .zshrc ; } > $HOME/.zshrc
 fi
 
-echo "$0 - install python3"
+# install python3
 python3 -m venv $HOME/python3
 source $HOME/python3/bin/activate
 pip install --upgrade pip
 
-echo "$0 - install ocaml and opam"
+# install ocaml and opam
 opam init --auto-setup --disable-sandboxing
 
+
+# define environment
+cat << EOF > $HOME/.env
+alias v=nvim
+alias ll='ls -alF'
+EOF
 
