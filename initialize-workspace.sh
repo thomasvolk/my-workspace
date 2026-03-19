@@ -20,7 +20,14 @@ opam init --auto-setup --disable-sandboxing
 
 # define environment
 cat << EOF > $HOME/.env
+export PATH="$HOME/.bin:$HOME/.config/emacs/bin:$PATH"
+export EDITOR_AI=copilot
+
+alias e='emacs -nw'
+alias ec='emacsclient'
+alias ed='emacs --daemon'
+
 alias v=nvim
-alias ll='ls -alF'
 EOF
 
+echo "source $HOME/.env" >> $HOME/.zshrc
