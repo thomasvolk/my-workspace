@@ -1,13 +1,24 @@
 # workspace
 
-My workspace
+This is a ubuntu25 workspace.
 
-Download the image ubuntu-25.10-desktop-arm64.iso from https://ubuntu.com/download/desktop into the `$HOME/Downloads` folder
+## On the host system
 
-build
+Build the VM:
 
 	make build
 	
-run
+Run the VM:
 
 	./workspace
+
+SSH into the VM:
+
+    ssh <username>@localhost -p 2222
+
+## On the guest system
+
+Install ssh server:
+
+    sudo apt install openssh-server
+
