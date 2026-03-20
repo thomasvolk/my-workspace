@@ -80,3 +80,10 @@ if [ ! -d $HOME/git/my-neovim-config ]; then
   ln -s $HOME/git/my-neovim-config/nvim $HOME/.config/nvim
 fi
 
+# software
+pip install 'python-lsp-server[all]' pylint
+pip install uv
+npm install -g @github/copilot-language-server
+npm install -g tree-sitter-cli
+npm i -g bash-language-server
+opam install -y ocamlformat-rpc ocamlformat ocaml-lsp-server utop

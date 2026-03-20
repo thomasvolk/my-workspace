@@ -9,7 +9,10 @@ sudo apt update && sudo apt upgrade -y
 sudo apt install -y \
     tmux \
     neovim \
+    ripgrep \
+    lazygit \
     emacs \
+    xclip \
     git \
     curl \
     zsh \
@@ -23,3 +26,5 @@ sudo apt install -y \
     pandoc
 
 sudo apt autoremove -y
+
+sudo snap install rclone
