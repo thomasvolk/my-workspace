@@ -23,8 +23,10 @@ sudo apt install -y \
     python3-venv \
     opam \
     guile-3.0 \
-    pandoc
+    pandoc \
+    thunderbird
 
 sudo apt autoremove -y
 
 sudo snap install rclone
+sudo snap install brave
