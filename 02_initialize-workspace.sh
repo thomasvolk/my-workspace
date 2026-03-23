@@ -39,7 +39,7 @@ alias ed='emacs --daemon'
 
 alias v=nvim
 
-eval $(opam config env)
+eval \$(opam config env)
 EOF
 
 source $HOME/.env
