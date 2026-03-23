@@ -2,6 +2,10 @@
 
 This is a ubuntu25 workspace.
 
+Preparation:
+
+    brew install qemu
+
 ## On the host system
 
 Build the VM:
