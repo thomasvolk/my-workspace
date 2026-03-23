@@ -38,6 +38,8 @@ alias ec='emacsclient'
 alias ed='emacs --daemon'
 
 alias v=nvim
+
+eval \$(opam config env)
 EOF
 
 source $HOME/.env
@@ -86,4 +88,5 @@ pip install uv
 npm install -g @github/copilot-language-server
 npm install -g tree-sitter-cli
 npm i -g bash-language-server
+eval $(opam config env)
 opam install -y ocamlformat-rpc ocamlformat ocaml-lsp-server utop
