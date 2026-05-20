@@ -34,7 +34,9 @@ source \$HOME/python3/bin/activate
 source \$HOME/.nvm/nvm.sh
 
 alias ed='emacs --daemon'
-alias e='emacsclient -nw -c -a "emacs"'
+alias edk='emacsclient -e "(kill-emacs)"'
+alias e='emacsclient -nw -c -a "emacs -nw"'
+alias ew='emacsclient -n -c -a "emacs -n"'
 
 alias v=nvim
 
