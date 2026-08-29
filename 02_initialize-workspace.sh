@@ -2,59 +2,27 @@
 
 set -e
 
-# install ohmyzsh
-if [ ! -d $HOME/.oh-my-zsh ]; then
-  if [ -f $HOME/.zshrc ]; then
-      mv $HOME/.zshrc $HOME/.zshrc_bak
-  fi
-  sh -c "RUNZSH=no $(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh) --skip-chsh"
+mkdir -p $HOME/.bin
+
+mkdir -p $HOME/git
+
+# shell
+if [ ! -d $HOME/git/my-shell ]; then
+  (cd $HOME/git && git clone https://github.com/thomasvolk/my-shell.git)
 fi
-
-# install python3
-python3 -m venv $HOME/python3
-source $HOME/python3/bin/activate
-pip install --upgrade pip
-
-#nvm
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash
-source $HOME/.nvm/nvm.sh
-nvm install node
-
-
+(cd $HOME/git/my-shell && ./bootstrap.sh)
 
 # install ocaml and opam
 opam init --auto-setup --disable-sandboxing
 
 # define environment
-cat << EOF > $HOME/.env
-export PATH="\$HOME/.bin:\$HOME/.config/emacs/bin:\$HOME/.opam/default/bin:\$PATH"
-export EDITOR_AI=copilot
-
-source \$HOME/python3/bin/activate
-source \$HOME/.nvm/nvm.sh
-
-alias ed='emacs --daemon'
-alias edk='emacsclient -e "(kill-emacs)"'
-alias e='emacsclient -nw -c -a "emacs -nw"'
-alias ew='emacsclient -n -c -a "emacs -n"'
-
-alias v=nvim
+cat << EOF >> $HOME/.env_local
+export PATH="\$HOME/.opam/default/bin:\$PATH"
 
 eval \$(opam config env)
 EOF
 
 source $HOME/.env
-
-if grep -qF "source $HOME/.env" $HOME/.zshrc; then
-  echo ".env already added to .zshrc"
-else
-  echo "add .env to .zshrc"
-  echo "source $HOME/.env" >> $HOME/.zshrc
-fi
-
-mkdir -p $HOME/.bin
-
-mkdir -p $HOME/git
 
 # tmux
 if [ ! -d $HOME/git/my-tmux-config ]; then
