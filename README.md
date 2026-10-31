@@ -26,3 +26,7 @@ Install ssh server:
 
     sudo apt install openssh-server
 
+## Hot Keys
+
+* uncapture mouse cursor: `ctrl + alt + g`
+* exit full screen: `cmd + f`
