@@ -6,6 +6,11 @@ mkdir -p $HOME/.bin
 
 mkdir -p $HOME/git
 
+# time sync: the guest clock stops while the host sleeps, so let chrony step it
+sudo apt install -y chrony
+echo 'makestep 1 -1' | sudo tee /etc/chrony/conf.d/makestep.conf
+sudo systemctl restart chrony
+
 # shell
 if [ ! -d $HOME/git/my-shell ]; then
   (cd $HOME/git && git clone https://github.com/thomasvolk/my-shell.git)
